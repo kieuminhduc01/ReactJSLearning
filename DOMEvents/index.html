@@ -13,10 +13,7 @@
 
 <body>
     <div id="root"></div>
-
     <script type="text/babel">
-        //Data api
-
         const courseItemsAPI = [{
             "id": 1,
             "name": "kieu minh ducc",
@@ -32,22 +29,18 @@
             "name": "Kieu tien thanh",
             "dob": "07/12/1972"
         }]
-
         //Arrow function
-        const CourseCompoment = ({ onClick, ...props }) => (
+        const CourseCompoment = props => (
             <div>
-                <h2
-                    onClick={onClick}
-                >{props.id}</h2>
+                <h2>{props.id}</h2>
                 <h2>{props.name}</h2>
                 <h2>{props.dob}</h2>
             </div>
         )
 
-        const App = () => {
-            const handleClick = (element) => {
 
-            }
+        //container
+        const App = () => {
             return (
                 <div id="wrapper">
                     {courseItemsAPI.map(element => (
@@ -55,16 +48,13 @@
                             id={element.id}
                             name={element.name}
                             dob={element.dob}
-                            onClick={() => handleClick(element)}
                         />
                     ))}
                 </div>
             )
         }
-
         ReactDOM.render(<App />, document.getElementById('root'))
     </script>
-
 </body>
 
 </html>
