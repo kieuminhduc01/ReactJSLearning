@@ -30,27 +30,36 @@
             "dob": "07/12/1972"
         }]
         //Arrow function
-        const CourseCompoment = props => (
+        const CourseCompoment = ({ course, onClick }) => (
             <div>
-                <h2>{props.id}</h2>
-                <h2>{props.name}</h2>
-                <h2>{props.dob}</h2>
+                <h2
+                    onClick={() => onClick(course)}
+                >{course.id}</h2>
+                <h2>{course.name}</h2>
+                <h2>{course.dob}</h2>
             </div>
         )
 
 
         //container
+
         const App = () => {
+            const handleClick = (course) => {
+                console.log(course.title)
+            }
             return (
-                <div id="wrapper">
-                    {courseItemsAPI.map(element => (
-                        <CourseCompoment
-                            id={element.id}
-                            name={element.name}
-                            dob={element.dob}
-                        />
-                    ))}
-                </div>
+                < div id="wrapper" >
+                    {
+                        courseItemsAPI.map(course => (
+                            <CourseCompoment
+                                id={course.id}
+                                name={course.name}
+                                dob={course.dob}
+                                onClick={() => handleClick(course)}
+                            />
+                        ))
+                    }
+                </div >
             )
         }
         ReactDOM.render(<App />, document.getElementById('root'))
