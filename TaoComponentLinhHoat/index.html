@@ -13,73 +13,51 @@
 
 <body>
     <div id="root"></div>
-    <!-- <script type="text/babel">
-        const Form = {
-            Input() {
-                return <input />
-            },
-            Checkbox() {
-                return <input type="checkbox" />
-            }
-        }
-        function App() {
-            const type = 'Checkbox'
+    <script type="text/babel">
+        const stackDiscountTemplate = {
+                title: "offer.view.summary.stackDiscount.label",
+                options: [
+                    {
+                        id: "radioOverride",
+                        name: "StackDiscount",
+                        title: "offer.view.summary.stackDiscount.stack.label",
+                    },
+                    {
+                        id: "radioStack",
+                        name: "StackDiscount",
+                        title: "offer.view.summary.stackDiscount.override.label",
+                    },
+                ],
+            };
+        function App({ group }) {
+            let ListRadioBoxComponent = group.options.map(a =>
+                <div style={{ display: "inline-block" }}>
+                    <input type={"radio"} name={a.name} id={a.id} />
+                    <label htmlFor={"radioOverride"} style={{ paddingLeft: "6px" }}>
+                        {a.title}
+                    </label>
+                </div>
+            )
 
-            const Component = Form[type]
             return (
-                <div id="wrapper">
-                    <Component />
+                <div div className={"row"} >
+                    <div
+                        className={"col-sm-12"}
+                        style={{ paddingTop: "25px", paddingLeft: "20px" }}
+                    >
+                        <div className={"row"}>
+                            <div className={"col-sm-3"} style={{ paddingTop: "5px" }}>
+                                {group.title}
+                            </div>
+                            <div className={"col-sm-6"}>
+                                {ListRadioBoxComponent}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )
         }
-
-        ReactDOM.render(<App />, document.getElementById('root'))
-    </script> -->
-    <!-- <script type="text/babel">
-        function Button({ title, href, onClick }) {
-            let Component = 'button'
-            const props = {}
-
-            if (href) {
-                Component = 'a'
-                props.href = href
-            }
-
-            if (onClick) {
-                props.onClick = onClick
-            }
-
-            console.log(props);
-            return (
-                <Component {...props}>{title}</Component>
-            )
-        }
-        function App() {
-            return (
-                <div id="wrapper">
-                    <Button
-                        title="Click me!"
-                        href="https://fullstack.edu.vn/"
-                        onClick={() => console.log(Math.random())}
-                    />
-                </div>
-            )
-        }
-        ReactDOM.render(<App />, document.getElementById('root'))
-    </script> -->
-    <!-- <script type="text/babel">
-
-        function App({ title }) {
-            return (
-                <div id="wrapper">
-                    <h1>{title || 'gia tri default'}</h1>
-                </div>
-            )
-        }
-        ReactDOM.render(<App title="Welcome back" />, document.getElementById('root'))
-    </script> -->
-    <script>
-            
+        ReactDOM.render(<App group={stackDiscountTemplate} />, document.getElementById('root'))
     </script>
 </body>
 
